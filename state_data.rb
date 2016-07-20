@@ -1,3 +1,4 @@
+# HASHMAP DATA FOR PROCESSING
 @states = {
   OR: {name: 'Oregon', cities: ['Oregon City', 'Pendleton']},
   FL: {name: 'Florida', cities: ['Miami', 'Fort Lauderdale', 'Joeville']},
@@ -18,6 +19,7 @@
   TX: 5.5
 }
 
+# Using a string, finds if state code is valid, and if it exists, give you data on the state.
 def describe_state(string)
   if string == nil || string.length != 2
     return "#{string} is not a valid code."
@@ -35,6 +37,7 @@ def describe_state(string)
   end
 end
 
+# Calculate taxes by checking string against state codes, then grabbing the state tax and multiplying by amount parameter
 def calculate_tax(string, amount)
   if string == nil || string.length != 2
     return 'Not a valid code.'
@@ -49,11 +52,13 @@ def calculate_tax(string, amount)
   end
 end
 
+# Returns a state if the string matches any of its cities
 def find_state_for_city(string)
   string = string.strip.downcase
   @states.each { |key, value| puts @states[key][:name] if value[:cities].map(&:downcase).include?(string) }
 end
 
+# Tests
 def test(string, amount=nil)
   puts describe_state(string)
   puts calculate_tax(string, amount) if amount
